@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "904753818452",
+    "project_id": "note291-ada3c",
+    "storage_bucket": "note291-ada3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904753818452:android:7d093ffa11b3d9366636c1",
+        "android_client_info": {
+          "package_name": "com.example.fire_note_291"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3CaQ6dawQLGuv616qJRa1gDmDpwlqrGI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
