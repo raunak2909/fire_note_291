@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fire_note_291/firebase_options.dart';
+import 'package:fire_note_291/profile_pic_page.dart';
+import 'package:fire_note_291/register_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +14,7 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: ProfilePicPage(),
     );
   }
 }
@@ -29,6 +32,7 @@ class MyApp extends StatelessWidget {
 
 class HomePage extends StatelessWidget {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+
 
 
   @override
@@ -50,6 +54,19 @@ class HomePage extends StatelessWidget {
               return ListTile(
                 title: Text(snapshot.data!.docs[index].data()['title']),
                 subtitle: Text(snapshot.data!.docs[index].data()['desc']),
+                trailing: SizedBox(
+                  width: 100,
+                  child: Row(
+                    children: [
+                      IconButton(onPressed: (){
+                        collectionRef.doc(snapshot.data!.docs[index].id).update({
+                          "desc" : "My note desc Updated!!"
+                        });
+                      }, icon: Icon(Icons.edit)),
+                      IconButton(onPressed: (){}, icon: Icon(Icons.delete_outline)),
+                    ],
+                  ),
+                ),
               );
             }) : Center(
               child: Text('No Notes yet'),
