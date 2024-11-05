@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fire_note_291/firebase_options.dart';
+import 'package:fire_note_291/login_google_page.dart';
 import 'package:fire_note_291/profile_pic_page.dart';
 import 'package:fire_note_291/register_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 void main() async{
@@ -24,21 +26,50 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: ProfilePicPage(),
+      home: LoginGooglePage(),
     );
   }
 }
 
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+  FirebaseMessaging msgService = FirebaseMessaging.instance;
 
+  @override
+  void initState() async{
+    super.initState();
+    NotificationSettings settings= await msgService.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
 
+    print("Device Token : ${msgService.getToken()}");
+
+
+
     var collectionRef = firestore.collection("notes");
+
+
+    ///foreground
+    FirebaseMessaging.onMessage.listen((event) {
+      print("Notification: ${event.notification!.title}, ${event.notification!.body}");
+    });
 
     return Scaffold(
       appBar: AppBar(

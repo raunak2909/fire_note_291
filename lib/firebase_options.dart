@@ -67,6 +67,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '904753818452',
     projectId: 'note291-ada3c',
     storageBucket: 'note291-ada3c.appspot.com',
+    androidClientId: '904753818452-vb8d3unlsl3te9ju7tv9tm7m3qi0pqkm.apps.googleusercontent.com',
+    iosClientId: '904753818452-rmapdf8da3qkbfc1ols1ihclj21bep7e.apps.googleusercontent.com',
     iosBundleId: 'com.example.fireNote291',
   );
 
@@ -76,6 +78,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '904753818452',
     projectId: 'note291-ada3c',
     storageBucket: 'note291-ada3c.appspot.com',
+    androidClientId: '904753818452-vb8d3unlsl3te9ju7tv9tm7m3qi0pqkm.apps.googleusercontent.com',
+    iosClientId: '904753818452-u05j6ru5ffg5kiabkluv794ngdabuosr.apps.googleusercontent.com',
     iosBundleId: 'com.example.fireNote291.RunnerTests',
   );
 }
